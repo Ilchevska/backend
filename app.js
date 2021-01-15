@@ -73,9 +73,10 @@ server.put("/update/:id", async (request, response) => {
         }
 }) */
 
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 8080;
 server.listen(PORT, async () => {
     try {
+        console.log(`Server is listening on port ${PORT}...`)
         await client.connect();
         collection = client.db("twilio").collection("applicantDetails");
     } catch (e) {
