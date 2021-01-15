@@ -5,7 +5,7 @@ const BodyParser = require("body-parser");
 const {request, response} = require("express");
 
 const client = new MongoClient("mongodb+srv://m001-student:m001-mongodb-basics@twilio.ex8eh.azure.mongodb.net/twilio?retryWrites=true&w=majority");
-const server = Express();
+const server = express();
 
 server.use(BodyParser.json());
 server.use(BodyParser.urlencoded({extended: true}));
