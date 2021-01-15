@@ -73,7 +73,7 @@ server.put("/update/:id", async (request, response) => {
         }
 }) */
 
-var port = process.env.port || 3000;
+var port = process.env.port || 3003;
 server.listen(port, async () => {
     try {
         await client.connect();
