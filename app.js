@@ -45,17 +45,18 @@ server.get("/get/:id", async (request, response) => {
     }
 })
 
-server.put("/update/:id", async (request, response) => {
-
-    var id = request.params.id;
+server.put("/update/id", async (request, response) => {
+    const data = req.body;
+    var id = request.query.citID;
 
     client.connect(function (err, db) {
         if (err) throw err;
-        db.collection("applicantDetails").updateOne({ "_id": id }, { $set: {applicationStatus: status.value} }, function (err, result) {
+        db.collection("applicantDetails").updateOne({ "citID": id }, { $set: data }, function (err, result) {
             assert.equal(null, err);
             console.log("Items updated");
             db.close();
     })
+
 })
   
 
@@ -76,7 +77,7 @@ server.put("/update/:id", async (request, response) => {
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, async () => {
     try {
-        console.log(`Server is listening on port ${PORT}...`)
+        console.log(`Server is listening on port...`)
         await client.connect();
         collection = client.db("twilio").collection("applicantDetails");
     } catch (e) {
