@@ -48,7 +48,7 @@ server.get("/get/:id", async (request, response) => {
 server.put("/update/id", async (request, response) => {
     const data = req.body;
     var id = request.query.citID;
-
+    console.log(id);
     client.connect(function (err, db) {
         if (err) throw err;
         db.collection("applicantDetails").updateOne({ "citID": id }, { $set: data }, function (err, result) {
