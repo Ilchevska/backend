@@ -13,7 +13,7 @@ server.use(Cors());
 server.set('view engine', 'ejs')
 
 var collection;
-
+var id = "";
 
 server.get("/search", async (request, response) =>  {
     try {
@@ -39,7 +39,6 @@ server.get("/get/:id", async (request, response) => {
     try {
         let result = await collection.findOne({ "_id": ObjectID(request.params.id)});
         response.send(result);
-
     } catch (e) {
         response.status(500).send({ message: e.message});
     }
@@ -47,11 +46,10 @@ server.get("/get/:id", async (request, response) => {
 
 server.put("/update/:id", async (request, response) => {
     const data = req.body;
-    var id = request.query.citID;
     console.log(id);
     client.connect(function (err, db) {
         if (err) throw err;
-        db.collection("applicantDetails").updateOne({ "citID": id }, { $set: data }, function (err, result) {
+        db.collection("applicantDetails").updateOne({ "_id": id }, { $set: data }, function (err, result) {
             assert.equal(null, err);
             console.log("Items updated");
             db.close();
