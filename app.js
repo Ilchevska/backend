@@ -1,11 +1,11 @@
 const { MongoClient, ObjectID } = require("mongodb");
-const Express = require("express");
+const express = require("express");
 const Cors = require("cors");
 const BodyParser = require("body-parser");
 const {request, response} = require("express");
 
 const client = new MongoClient("mongodb+srv://m001-student:m001-mongodb-basics@twilio.ex8eh.azure.mongodb.net/twilio?retryWrites=true&w=majority");
-const server = Express();
+const server = express();
 
 server.use(BodyParser.json());
 server.use(BodyParser.urlencoded({extended: true}));
@@ -45,17 +45,18 @@ server.get("/get/:id", async (request, response) => {
     }
 })
 
-server.put("/update/:id", async (request, response) => {
-
-    var id = request.params.id;
+server.put("/update/id", async (request, response) => {
+    const data = req.body;
+    var id = request.query.citID;
 
     client.connect(function (err, db) {
         if (err) throw err;
-        db.collection("applicantDetails").updateOne({ "_id": id }, { $set: {applicationStatus: status.value} }, function (err, result) {
+        db.collection("applicantDetails").updateOne({ "citID": id }, { $set: data }, function (err, result) {
             assert.equal(null, err);
             console.log("Items updated");
             db.close();
     })
+
 })
   
 
@@ -73,9 +74,10 @@ server.put("/update/:id", async (request, response) => {
         }
 }) */
 
-var port = process.env.port || 3000;
-server.listen(port, async () => {
+const PORT = process.env.PORT || 8080;
+server.listen(PORT, async () => {
     try {
+        console.log(`Server is listening on port ${PORT}...`)
         await client.connect();
         collection = client.db("twilio").collection("applicantDetails");
     } catch (e) {
