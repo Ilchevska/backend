@@ -45,7 +45,7 @@ server.get("/get/:id", async (request, response) => {
     }
 })
 
-server.put("/update/id", async (request, response) => {
+server.put("/update/:id", async (request, response) => {
     const data = req.body;
     var id = request.query.citID;
     console.log(id);
