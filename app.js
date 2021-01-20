@@ -49,7 +49,6 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
-    res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "x-requested-with, x-requested-by");
     const data = req.body;
     var id = req.body;
