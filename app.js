@@ -49,8 +49,8 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
-    const data = req.body;
-    var id = req.body.id;
+    const data = req.body.status;
+    var id = "5f9134109abee7e9ba0d6eea";
     client.connect(function (err, db) {
         if (err) throw err;
         db.collection("applicantDetails").updateOne({"_id": ObjectID(id)}, { $set: data }, function (err, result) {
