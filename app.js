@@ -49,12 +49,11 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
-    res.header("Access-Control-Allow-Headers", "x-requested-with, x-requested-by");
     const data = req.body;
     var id = req.body;
     client.connect(function (err, db) {
         if (err) throw err;
-        db.collection("applicantDetails").updateOne({"_id": id}, { $set: data }, function (err, result) {
+        db.collection("applicantDetails").updateOne({"_id": ObjectID(id)}, { $set: data }, function (err, result) {
             console.log("Items updated");
             db.close();
     })
