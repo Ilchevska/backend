@@ -14,6 +14,11 @@ server.set('view engine', 'ejs')
 
 var collection;
 
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
 server.get("/search", async (request, response) =>  {
     try {
         let result = await collection.aggregate([
