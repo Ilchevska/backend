@@ -40,7 +40,7 @@ server.get("/get/:id", async (request, response) => {
     }
 })
 
-server.put("https://morning-sands-01107.herokuapp.com/update/:id", async (request, response) => {
+server.put("update/:id", async (request, response) => {
     const data = req.body;
     const citID = req.params.getID;
     console.log(id);
