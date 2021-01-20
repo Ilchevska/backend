@@ -9,7 +9,6 @@ const server = express();
 
 server.use(BodyParser.json());
 server.use(BodyParser.urlencoded({extended: true}));
-server.use(Cors());
 server.set('view engine', 'ejs')
 
 var collection;
@@ -55,7 +54,12 @@ server.put("https://morning-sands-01107.herokuapp.com/update/:id", async (reques
     client.connect(function (err, db) {
         if (err) throw err;
         db.collection("applicantDetails").updateOne({"citID": citID}, { $set: data }, function (err, result) {
-            console.log("Items updated");
+            if (err) {
+                res.send("Error " + error + " \r\n " + citID + id)
+            }else { 
+            
+                res.send("Sucess")
+            }
             db.close();
     })
 
