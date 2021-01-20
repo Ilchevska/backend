@@ -50,11 +50,11 @@ server.get("/get/:id", async (request, response) => {
 
 server.put("/update/:id", async (request, response) => {
     const data = req.body;
-    var id = req.params._id;
+    var id = req.params.id;
     console.log(id);
     client.connect(function (err, db) {
         if (err) throw err;
-        db.collection("applicantDetails").updateOne({"_id": ObjectID(id)}, { $set: data }, function (err, result) {
+        db.collection("applicantDetails").updateOne(id, { $set: data }, function (err, result) {
             console.log("Items updated");
             db.close();
     })
