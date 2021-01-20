@@ -1,6 +1,5 @@
 const { MongoClient, ObjectID } = require("mongodb");
 const express = require("express");
-const Cors = require("cors");
 const BodyParser = require("body-parser");
 const {request, response} = require("express");
 
@@ -9,14 +8,8 @@ const server = express();
 
 server.use(BodyParser.json());
 server.use(BodyParser.urlencoded({extended: true}));
-server.set('view engine', 'ejs')
 
 var collection;
-
-server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-  });
 
 server.get("/search", async (request, response) =>  {
     try {
