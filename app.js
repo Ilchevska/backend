@@ -49,11 +49,10 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
-
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5000');
     const data = req.body;
     var id = req.body;
     client.connect(function (err, db) {
-        res.header('Access-Control-Allow-Origin', '*');
         if (err) throw err;
         db.collection("applicantDetails").updateOne({"_id": id}, { $set: data }, function (err, result) {
             console.log("Items updated");
