@@ -50,11 +50,11 @@ server.get("/get/:id", async (request, response) => {
 
 server.put("https://morning-sands-01107.herokuapp.com/update/:id", async (request, response) => {
     const data = req.body;
-    var id = req.params.id;
+    const citID = req.params.getID;
     console.log(id);
     client.connect(function (err, db) {
         if (err) throw err;
-        db.collection("applicantDetails").updateOne(id, { $set: data }, function (err, result) {
+        db.collection("applicantDetails").updateOne({"citID": citID}, { $set: data }, function (err, result) {
             console.log("Items updated");
             db.close();
     })
