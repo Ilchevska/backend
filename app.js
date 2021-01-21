@@ -15,7 +15,7 @@ server.set('view engine', 'ejs')
 var collection;
 
 server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5000');
     next();
   });
 
@@ -49,6 +49,7 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
+    
     const data = req.body;
     var id = req.params.id;
     console.log(id);
