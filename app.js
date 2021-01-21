@@ -52,23 +52,36 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
-    res.header("Access-Control-Allow-Headers", "x-requested-with, x-requested-by");
-    const data = req.body;
-    var id = req.params.id;
-    console.log(id);
-    client.connect(function (err, db) {
-        if (err) throw err;
-        db.collection("applicantDetails").updateOne({"_id": ObjectID(id)}, { $set: data }, function (err, result) {
-            console.log("Items updated");
-            db.close();
-    })
 
+    try {
+        let data = request.body;
+        var id = request.params.id;
+        console.log(id);
+        client.connect(function (err, db) {
+            if (err) throw err;
+            collection.updateOne({"_id": ObjectID(id)}, { $set: data }, function (err, result) {
+                if (err) {
+                    throw err;
+                } else {
+                console.log("Items updated");
+                db.close(); 
+                }
+            })
+        })
+/*         client.connect(function (err, db) {
+            if (err) throw err;
+            collection("applicantDetails").updateOne({"_id": ObjectID(id)}, { $set: data }, function (err, result) {
+                console.log("Items updated");
+                db.close(); 
+        })*/
+    }catch (e) {
+
+    }
 })
-  
 
     // let result = await collection.findOne({ "_id": ObjectID(id)});
     // response.send(result);
- })
+ 
 
 /* server.get("/applicant_details", async (request, response) => {
         const db = client.db("twilio");
