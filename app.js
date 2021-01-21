@@ -42,16 +42,17 @@ server.get("/get/:id", async (request, response) => {
 
 server.put("update/:id", async (request, response) => {
     const data = req.body;
-    const citID = req.params.getID;
+    //const citID = req.params.getID;
+    const id = req.body;
     console.log(id);
     client.connect(function (err, db) {
         if (err) throw err;
-        db.collection("applicantDetails").updateOne({"citID": citID}, { $set: data }, function (err, result) {
+        db.collection("applicantDetails").updateOne({_id: id}, { $set: data }, function (err, result) {
             if (err) {
-                res.send("Error " + error + " \r\n " + citID + id)
+                result.send("Error " + error + " \r\n " + citID + id)
             }else { 
             
-                res.send("Sucess")
+                result.send("Success")
             }
             db.close();
     })
