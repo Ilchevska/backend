@@ -18,7 +18,6 @@ server.use((req, res, next) => {
     req.header('Access-Control-Allow-Origin', "*");
     req.header("Access-Control-Allow-Methods", "POST,PUT");
     req.header("Access-Control-Allow-Headers", "X-Requested-With");
-    req.headers['X-Requested-With'] = 'X-Requested-by'
     next();
   }); 
 
@@ -52,7 +51,7 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
-
+    request.headers['X-Requested-With'] = 'X-Requested-by'
 //    request.header("X-Requested-With", "XMLHttpRequest");
 
     try {
