@@ -18,7 +18,7 @@ server.use((req, res, next) => {
     req.header('Access-Control-Allow-Origin', "*");
     req.header("Access-Control-Allow-Methods", "POST,PUT");
     req.header("Access-Control-Allow-Headers", "X-Requested-With");
-    req.setHeader("X-Requested-With", "X-Requested-by")
+    req.headers['X-Requested-With'] = 'X-Requested-by'
     next();
   }); 
 
