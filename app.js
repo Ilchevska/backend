@@ -18,6 +18,7 @@ server.use((req, res, next) => {
     req.header('Access-Control-Allow-Origin', "*");
     req.header("Access-Control-Allow-Methods", "POST,PUT");
     req.header("Access-Control-Allow-Headers", "X-Requested-With");
+    req.headers['X-Requested-With'] = 'xmlhttprequest'
     next();
   }); 
 
@@ -51,7 +52,7 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
-    request.setHeader('X-Requested-With', 'xmlhttprequest')
+  //  request.setHeader('X-Requested-With', 'xmlhttprequest')
 //    request.header("X-Requested-With", "XMLHttpRequest");
 
     try {
