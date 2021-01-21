@@ -1,5 +1,6 @@
 const { MongoClient, ObjectID } = require("mongodb");
 const express = require("express");
+const Cors = require("cors");
 const BodyParser = require("body-parser");
 const {request, response} = require("express");
 
@@ -8,8 +9,15 @@ const server = express();
 
 server.use(BodyParser.json());
 server.use(BodyParser.urlencoded({extended: true}));
+server.use(Cors());
+server.set('view engine', 'ejs')
 
 var collection;
+
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 
 server.get("/search", async (request, response) =>  {
     try {
@@ -40,20 +48,14 @@ server.get("/get/:id", async (request, response) => {
     }
 })
 
-server.put("update/:id", async (request, response) => {
+server.put("/update/:id", async (request, response) => {
     const data = req.body;
-    //const citID = req.params.getID;
-    const id = req.body;
+    var id = req.params.id;
     console.log(id);
     client.connect(function (err, db) {
         if (err) throw err;
-        db.collection("applicantDetails").updateOne({_id: id}, { $set: data }, function (err, result) {
-            if (err) {
-                res.send("Error " + error + " \r\n " + citID + id)
-            }else { 
-            
-                res.send("Success")
-            }
+        db.collection("applicantDetails").updateOne({"_id": ObjectID(id)}, { $set: data }, function (err, result) {
+            console.log("Items updated");
             db.close();
     })
 
