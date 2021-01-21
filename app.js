@@ -19,7 +19,7 @@ server.use((req, res, next) => {
 //    res.header("Access-Control-Allow-Credentials", "true")
     res.header("Access-Control-Allow-Methods", "POST,PUT");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    response.header("X-Requested-With", "XMLHttpRequest");
+    req.header("X-Requested-With", "XMLHttpRequest");
     next();
   }); 
 
@@ -54,7 +54,8 @@ server.get("/get/:id", async (request, response) => {
 
 server.put("/update/:id", async (request, response) => {
 
-    response.header("X-Requested-With", "XMLHttpRequest");
+    request.header("X-Requested-With", "XMLHttpRequest");
+
     try {
         let data = request.body;
         var id = request.params.id;
