@@ -53,6 +53,7 @@ server.get("/get/:id", async (request, response) => {
 
 server.put("/update/:id", async (request, response) => {
 
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
     try {
         let data = request.body;
         var id = request.params.id;
