@@ -15,8 +15,9 @@ server.set('view engine', 'ejs')
 var collection;
 
 server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', "https://portal-cors-proxy.herokuapp.com/");
+    res.header('Access-Control-Allow-Origin', "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   }); 
 
