@@ -51,7 +51,7 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
-    request.headers['X-Requested-With'] = 'X-Requested-by'
+    request.setHeader('X-Requested-With', 'xmlhttprequest')
 //    request.header("X-Requested-With", "XMLHttpRequest");
 
     try {
