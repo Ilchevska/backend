@@ -15,10 +15,10 @@ server.set('view engine', 'ejs')
 var collection;
 
 server.use((req, res, next) => {
-    req.header('Access-Control-Allow-Origin', "*");
-    req.header("Access-Control-Allow-Methods", "POST,PUT");
-    req.header("Access-Control-Allow-Headers", "X-Requested-With");
-    req.headers['X-Requested-With'] = 'xmlhttprequest'
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header("Access-Control-Allow-Methods", "POST,PUT");
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    res.headers['X-Requested-With'] = 'xmlhttprequest'
     next();
   }); 
 
