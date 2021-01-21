@@ -49,10 +49,10 @@ server.put("update/:id", async (request, response) => {
         if (err) throw err;
         db.collection("applicantDetails").updateOne({_id: id}, { $set: data }, function (err, result) {
             if (err) {
-                result.send("Error " + error + " \r\n " + citID + id)
+                res.send("Error " + error + " \r\n " + citID + id)
             }else { 
             
-                result.send("Success")
+                res.send("Success")
             }
             db.close();
     })
