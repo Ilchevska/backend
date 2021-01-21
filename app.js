@@ -14,9 +14,13 @@ server.set('view engine', 'ejs')
 
 var collection;
 
+
+
 server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5000');
-    next();
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://morning-sands-01107.herokuapp.com/', true);
+xhr.withCredentials = true;
+xhr.send(null);
   });
 
 server.get("/search", async (request, response) =>  {
