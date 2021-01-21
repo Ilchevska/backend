@@ -14,10 +14,10 @@ server.set('view engine', 'ejs')
 
 var collection;
 
-server.use((req, res, next) => {
+/* server.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin: https://morning-sands-01107.herokuapp.com/');
     next();
-  });
+  }); */
 
 server.get("/search", async (request, response) =>  {
     try {
@@ -89,7 +89,7 @@ server.listen(PORT, async () => {
 })
 
 // Listen on a specific host via the HOST environment variable
-var host = process.env.HOST || '0.0.0.0';
+var host = process.env.HOST || 'https://morning-sands-01107.herokuapp.com/';
 // Listen on a specific port via the PORT environment variable
 var port = process.env.PORT || 8080;
 
