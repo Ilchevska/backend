@@ -15,7 +15,7 @@ server.set('view engine', 'ejs')
 var collection;
 
 server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin: *');
+    res.header('Access-Control-Allow-Origin: https://morning-sands-01107.herokuapp.com/');
     next();
   });
 
