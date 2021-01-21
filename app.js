@@ -14,12 +14,13 @@ server.set('view engine', 'ejs')
 
 var collection;
 
-// server.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', "*");
-//     res.header("Access-Control-Allow-Methods", "POST,PUT");
-//     res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-//     next();
-//   }); 
+server.use((req, res, next) => {
+    console.log(req.headers)
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header("Access-Control-Allow-Methods", "POST,PUT");
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    next();
+  }); 
 
 server.get("/search", async (request, response) =>  {
     try {
@@ -51,8 +52,7 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
-
-  //  request.setHeader('X-Requested-With', 'xmlhttprequest')
+   response.set('X-Requested-With', 'xmlhttprequest')
 //    request.header("X-Requested-With", "XMLHttpRequest");
 
     try {
