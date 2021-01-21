@@ -15,11 +15,10 @@ server.set('view engine', 'ejs')
 var collection;
 
 server.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Origin', "*");
 //    res.header("Access-Control-Allow-Credentials", "true")
-    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-    req.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
     next();
   }); 
 
@@ -53,7 +52,7 @@ server.get("/get/:id", async (request, response) => {
 })
 
 server.put("/update/:id", async (request, response) => {
-    
+    res.header("Access-Control-Allow-Headers", "x-requested-with, x-requested-by");
     const data = req.body;
     var id = req.params.id;
     console.log(id);
