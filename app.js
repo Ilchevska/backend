@@ -54,6 +54,8 @@ server.get("/get/:id", async (request, response) => {
 server.put("/update/:id", async (request, response) => {
 //   response.setheader['X-Requested-With'] = 'xmlhttprequest'
 //    request.header("X-Requested-With", "XMLHttpRequest");
+print ("Access-Control-Allow-Origin: *\n");
+print ("Access-Control-Allow-Headers: X-Requested-With, Content-Type\n");
 
     try {
         let data = request.body;
