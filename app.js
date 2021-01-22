@@ -19,6 +19,8 @@ server.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', "*");
     res.header("Access-Control-Allow-Methods", "POST,PUT");
     res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    print ("Access-Control-Allow-Origin: *\n");
+    print ("Access-Control-Allow-Headers: X-Requested-With, Content-Type\n");
     next();
   }); 
 
@@ -53,9 +55,9 @@ server.get("/get/:id", async (request, response) => {
 
 server.put("/update/:id", async (request, response) => {
 //   response.setheader['X-Requested-With'] = 'xmlhttprequest'
-//    request.header("X-Requested-With", "XMLHttpRequest");
-print ("Access-Control-Allow-Origin: *\n");
-print ("Access-Control-Allow-Headers: X-Requested-With, Content-Type\n");
+    request.header("X-Requested-With", "XMLHttpRequest");
+    response.header("X-Requested-With", "XMLHttpRequest");
+
 
     try {
         let data = request.body;
