@@ -14,15 +14,13 @@ server.set('view engine', 'ejs')
 
 var collection;
 
-/* server.use((req, res, next) => {
+server.use((req, res, next) => {
     console.log(req.headers)
     res.header('Access-Control-Allow-Origin', "*");
     res.header("Access-Control-Allow-Methods", "POST,PUT");
     res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-    print ( "Access-Control-Allow-Origin: *\n");
-print ("Access-Control-Allow-Headers: X-Requested-With, Content-Type\n");
     next();
-  });  */
+  }); 
 
 server.get("/search", async (request, response) =>  {
     try {
