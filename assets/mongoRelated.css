@@ -62,16 +62,11 @@ label {
     margin-top: 1em;
 }
 
-#logo {
-    max-width: 300px;
-}
-@media screen and (max-width : 1025px){
-    .m-brand__logo-wrapper {
-        transform: scale(0.5, 0.5); 
-       -ms-transform: scale(0.5, 0.5);
-       -webkit-transform: scale(0.5, 0.5);
-       position: relative;
-       right: 6em;
-      bottom: .7em;
-    }
-}
+/* .m-brand__logo-wrapper {
+     transform: scale(0.5, 0.5); 
+    -ms-transform: scale(0.5, 0.5);
+    -webkit-transform: scale(0.5, 0.5);
+    position: relative;
+    right: 6em;
+    bottom: .5em;
+} */
