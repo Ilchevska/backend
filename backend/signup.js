@@ -1,4 +1,3 @@
-//alert("JavaScript file connected");
 
 window.addEventListener("load", function(){
     var submitBtn = document.getElementById("submit");
@@ -13,7 +12,6 @@ window.addEventListener("load", function(){
         }
         else {
            result.style.display = "block"
-        // window.open("get_application.html", "_self")
         }
     }
 
@@ -73,7 +71,8 @@ dataType: "json",
 contentType: "application/json",
 data: JSON.stringify({"applicationStatus": update}),
 }).done(function(response){
-
+    alert("Application status has been updated to: " + update)
+    window.open("index.html", "_self")
 }).fail(function(response){
 console.log("Oops not working \n" );
 });
