@@ -1,0 +1,72 @@
+#citID {
+    font-size: 1.3em;
+}
+#citIDlbl {
+    font-size: 1.3em;
+}
+
+#ui-id-1 {
+    border: 1px solid black;
+    background-color: white;
+    width: 1em;
+    font-size: 1.3em;
+    padding: .5em;
+    margin-left: 1.5em;
+
+}
+
+#ui-id-1 {
+    list-style: none;
+}
+
+
+.ui-menu-item:hover {
+    background-color: rgb(235, 235, 235);
+}
+select {
+    background-color: rgb(235, 235, 235);
+}
+
+.ui-menu-item-wrapper:focus {
+    background-color: black;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+    background: rgb(235, 235, 235)!important;
+    color: black!important;
+    border: none!important;
+}
+
+#result {
+    display: none;
+}
+
+.row-space {
+    margin-top: 1em;
+}
+
+label {
+    font-weight: bold;
+}
+
+#submit {
+    font-size: 1.3em;
+}
+
+#result {
+    margin-top: 1em;
+}
+
+/* .m-brand__logo-wrapper {
+     transform: scale(0.5, 0.5); 
+    -ms-transform: scale(0.5, 0.5);
+    -webkit-transform: scale(0.5, 0.5);
+    position: relative;
+    right: 6em;
+    bottom: .5em;
+} */
