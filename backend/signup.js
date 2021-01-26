@@ -71,8 +71,11 @@ dataType: "json",
 contentType: "application/json",
 data: JSON.stringify({"applicationStatus": update}),
 }).done(function(response){
-    alert("Application status has been updated to: " + update)
-    window.open("index.html", "_self")
+    Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success'
+      )
 }).fail(function(response){
 console.log("Oops not working \n" );
 });
