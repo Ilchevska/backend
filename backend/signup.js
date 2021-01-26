@@ -77,7 +77,7 @@ dataType: "json",
 contentType: "application/json",
 data: JSON.stringify({"applicationStatus": update}),
 }).done(function(response){
-
+    swal("Success", "Application status was updated to " + update, "success")
 }).fail(function(response){
 console.log("Oops not working \n" );
 });
