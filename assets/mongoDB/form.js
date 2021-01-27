@@ -8,6 +8,12 @@ window.addEventListener("load", function(){
            citIDError.innerHTML = "Please enter an application ID";
            citIDError.style.fontSize = "1em";
            citIDError.style.color = "red";        
+        } else if (citID.value.length < 15) {
+            citIDError.innerHTML = "Please enter a valid application ID";
+            citIDError.style.fontSize = "1em";
+            citIDError.style.color = "red"; 
+        } else if (firstName.value == "") {
+            swal("Application not found", "The application ID was not found in the database", "error")
         }
         else {
            result.style.display = "block"
@@ -57,13 +63,24 @@ window.addEventListener("load", function(){
     $(document).ready(function(){
     
         $('.updateEvent').on('click', editEvent);
-    
+        $('#firstName').attr('disabled', true);
+        $('#lastName').attr('disabled', true);
+        $('#email').attr('disabled', true);
+        $('#phone').attr('disabled', true);
     });
     
+    $('#status').change(function() {
+        $("#status option:selected").attr('disabled','disabled')
+        .siblings().removeAttr('disabled');
+    })
+
     function editEvent(){
         var status = document.getElementById("status");
         var update = status.options[status.selectedIndex].text;
     
+        if (currentStatus.value == update) {
+            swal("Invalid action", "Application status has not been changed", "error")
+        } else {
         $.ajax({
         url: '/update/' + id,
         type:'PUT',
@@ -75,10 +92,10 @@ window.addEventListener("load", function(){
         }).fail(function(response){
         console.log("Oops not working \n" );
         });
-
+       
         swal({
             position: 'top-end',
-            icon: 'success',
+            icon: 'success',    
             text: 'Application status was updated',
             buttons: false,
             timer: 1500
@@ -89,6 +106,7 @@ window.addEventListener("load", function(){
         }, 2000)
 
         }
+    }
 
 });
 
