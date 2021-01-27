@@ -69,8 +69,10 @@ window.addEventListener("load", function(){
         $('#lastName').attr('disabled', true);
         $('#email').attr('disabled', true);
         $('#phone').attr('disabled', true);
+        $('#currentStatus').attr('disabled', true);
     });
     
+
     $('#status').change(function() {
         $("#status option:selected").attr('disabled','disabled')
         .siblings().removeAttr('disabled');
@@ -79,7 +81,7 @@ window.addEventListener("load", function(){
     function editEvent(){
         var status = document.getElementById("status");
         var update = status.options[status.selectedIndex].text;
-    
+
         if (currentStatus.value == update) {
             swal("Invalid action", "Application status has not been changed", "error")
         } else {
