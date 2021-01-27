@@ -13,10 +13,12 @@ window.addEventListener("load", function(){
             citIDError.style.fontSize = "1em";
             citIDError.style.color = "red"; 
         } else if (firstName.value == "") {
-            swal("Application not found", "The application ID was not found in the database", "error")
+            swal("Application not found", "The application ID was not found in the database", "info")
+            citIDError.innerHTML = "";
         }
         else {
-           result.style.display = "block"
+            citIDError.innerHTML = "";
+            result.style.display = "block"
         }
     }
 
