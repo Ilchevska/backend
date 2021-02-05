@@ -35,7 +35,6 @@ select {
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active,
 a.ui-button:active,
-.ui-button:active,
 .ui-button.ui-state-active:hover {
     background: rgb(235, 235, 235)!important;
     color: black!important;
@@ -55,7 +54,13 @@ label {
 }
 
 #submit {
-    font-size: 1.3em;
+    font-size: 1.2em;
+    padding:.5em;
+}
+
+#update, #cancel {
+    font-size: 1em;
+    padding:.5em;
 }
 
 #result {
@@ -68,10 +73,10 @@ label {
 @media screen and (max-width : 1025px){
     .m-brand__logo-wrapper {
         transform: scale(0.5, 0.5); 
-       -ms-transform: scale(0.5, 0.5);
-       -webkit-transform: scale(0.5, 0.5);
-       position: relative;
-       right: 6em;
-      bottom: .7em;
+        -ms-transform: scale(0.5, 0.5);
+        -webkit-transform: scale(0.5, 0.5);
+        position: relative;
+        right: 6em;
+        bottom: .7em;
     }
 }

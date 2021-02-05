@@ -1,7 +1,7 @@
 window.addEventListener("load", function(){
     var submitBtn = document.getElementById("submit");
-    submitBtn.addEventListener("click", submitForm);
-    
+    submitBtn.addEventListener("click" , submitForm);
+
     function submitForm(){
                 
         if(citID.value === ""){           
@@ -21,6 +21,14 @@ window.addEventListener("load", function(){
             result.style.display = "block"
         }
     }
+
+    
+    $('.form-group').keypress(function (e) {
+        if (e.which == 13) {
+          $('#submit').click();
+          return false;
+        }
+      });
 
     var id; 
     $(document).ready(function() {
@@ -56,20 +64,23 @@ window.addEventListener("load", function(){
                 $('#phone').val(number);
                 let status = ui.item.status;
                 $('#currentStatus').val(status)
-                let DOB = ui.item.DOB;
-                // $('#DOB').val(DOB)
+                //let DOB = ui.item.DOB;
+                //$('#DOB').val(DOB)
             }
         });
     });
     
     $(document).ready(function(){
     
-        $('.updateEvent').on('click', editEvent);
+        $('#update').on('click', editEvent);
         $('#firstName').attr('disabled', true);
         $('#lastName').attr('disabled', true);
         $('#email').attr('disabled', true);
         $('#phone').attr('disabled', true);
         $('#currentStatus').attr('disabled', true);
+        $('#cancel').on('click', function() {
+            window.open("index.html", "_self");
+        } );
     });
     
 
@@ -82,8 +93,8 @@ window.addEventListener("load", function(){
         var status = document.getElementById("status");
         var update = status.options[status.selectedIndex].text;
 
-        if (currentStatus.value == update) {
-            swal("Invalid action", "Application status has not been changed", "error")
+        if (currentStatus.value == update || update == "Please select an application status") {
+            swal("Invalid action", "Application status has not been changed", "info")
         } else {
         $.ajax({
         url: '/update/' + id,
@@ -112,7 +123,26 @@ window.addEventListener("load", function(){
         }
     }
 
+   var steps = [{
+          content: "Hello!"
+        }, {
+          element: '#citID',
+          content: "Please enter your citizenship ID provided to you by Damien O'Regan",
+          placement: 'bottom-start'
+        }]
+        var wt = new WebTour();
+        wt.setSteps(steps);
+        wt.start();
+
+        
+    $('#result').keypress(function (e) {
+        if (e.which == 13) {
+           $('#update').click();
+           return false;
+        }
+    });
 });
+
 
 
 
