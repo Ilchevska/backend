@@ -20,7 +20,7 @@ server.use(express.static(path.join(__dirname)));
 
 
 server.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + 'views/index.html'));
+    res.sendFile(path.join(__dirname + 'views/login.html'));
 });
 
 server.get("/search", async (request, response) =>  {
