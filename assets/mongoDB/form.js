@@ -28,7 +28,7 @@ window.addEventListener("load", function(){
                 },
                 {
                     element: '#update',
-                    content: "Once you have selected an application status, please select the Update button to update the database",
+                    content: "Once you have selected an application status, please click the Update button to send an SMS to the applicant's phone",
                     placement: 'top-start'
                 }    
             ]
@@ -140,7 +140,7 @@ window.addEventListener("load", function(){
 
    var steps = [
        {
-          content: "Thank you for visiting. Please click on \Next\" for a quick walkthrough of this page. You can complete the walkthrough by clicking \"Close\""
+          content: "Thank you for visiting. Please click on \"Next\" for a quick walkthrough of this page. You can complete the walkthrough by clicking \"Close\""
         }, {
           element: '#citID',
           content: "Please enter and select your Citizenship ID, which has been provided to you by Damien O'Regan.",
