@@ -19,6 +19,22 @@ window.addEventListener("load", function(){
         else {
             citIDError.innerHTML = "";
             result.style.display = "block"
+
+            var steps = [
+                {
+                    element: "#status",
+                    content: "Please select an application status from the availale options",
+                    placement: 'bottom-start'
+                },
+                {
+                    element: '#update',
+                    content: "Once you have selected an application status, please select the Update button to update the database",
+                    placement: 'top-start'
+                }    
+            ]
+                var wt2 = new WebTour();
+                wt2.setSteps(steps);
+                wt2.start();
         }
     }
 
@@ -69,7 +85,7 @@ window.addEventListener("load", function(){
             }
         });
     });
-    
+
     $(document).ready(function(){
     
         $('#update').on('click', editEvent);
@@ -103,7 +119,6 @@ window.addEventListener("load", function(){
         contentType: "application/json",
         data: JSON.stringify({"applicationStatus": update}),
         }).done(function(){
-    
         }).fail(function(response){
         console.log("Oops not working \n" );
         });
@@ -123,13 +138,20 @@ window.addEventListener("load", function(){
         }
     }
 
-   var steps = [{
-          content: "Hello!"
+   var steps = [
+       {
+          content: "Thank you for visiting. Please click on \Next\" for a quick walkthrough of this page. You can complete the walkthrough by clicking \"Close\""
         }, {
           element: '#citID',
-          content: "Please enter your citizenship ID provided to you by Damien O'Regan",
+          content: "Please enter and select your Citizenship ID, which has been provided to you by Damien O'Regan.",
           placement: 'bottom-start'
+        },
+        {
+            element: "#submit",
+            content: "Once you have selected your Citizenship ID, please select the Search button",
+            placement: 'top-start'
         }]
+
         var wt = new WebTour();
         wt.setSteps(steps);
         wt.start();
