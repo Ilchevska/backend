@@ -16,11 +16,10 @@ server.set('view engine', 'ejs')
 
 var collection;
 
-server.use(express.static(__dirname, {index: 'login.html'}));
-
+server.use('/assets', express.static('assets'));
 
 server.get('/', function (req, res) {
-    res.sendFile('/login.html', {root: path.join(__dirname, '../index')});
+    res.sendFile('/login.html', {root: __dirname});
 });
 
 server.get("/search", async (request, response) =>  {
