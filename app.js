@@ -16,10 +16,11 @@ server.set('view engine', 'ejs')
 
 var collection;
 
+server.use(express.static(__dirname, {index: 'login.html'}));
 server.use('/assets', express.static('assets'));
 
 server.get('/', function (req, res) {
-    res.sendFile('/login.html', {root: __dirname});
+    res.sendFile('/login.html', {root: path.join(__dirname, '../index')});
 });
 
 server.get("/search", async (request, response) =>  {
@@ -68,9 +69,9 @@ server.put('/update/:id', async (request, response) => {
     }
 })
 
-server.post('/index', async (request,response) => {
+// server.post('/index', async (request,response) => {
     
-})
+// })
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, async () => {
